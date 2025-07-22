@@ -16,7 +16,7 @@ namespace TestbackendProject
             builder.Services.AddScoped<SeatingService>();
 
             builder.Services.AddDbContext<ExamManagementContext>(options =>
-     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
             builder.Services.AddSolrNet("http://localhost:8983/solr/students");
@@ -40,7 +40,7 @@ namespace TestbackendProject
             });
 
             var app = builder.Build();
-
+            app.UseRouting();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

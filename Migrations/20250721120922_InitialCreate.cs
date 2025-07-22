@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -14,9 +15,9 @@ namespace TestbackendProject.Migrations
                 name: "Classes",
                 columns: table => new
                 {
-                    ClassID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClassName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ClassID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ClassName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +28,9 @@ namespace TestbackendProject.Migrations
                 name: "Classrooms",
                 columns: table => new
                 {
-                    ClassroomID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClassroomName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ClassroomID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ClassroomName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,9 +41,9 @@ namespace TestbackendProject.Migrations
                 name: "Subjects",
                 columns: table => new
                 {
-                    SubjectID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    SubjectID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    SubjectName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,14 +54,14 @@ namespace TestbackendProject.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    StudentID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RollNumber = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClassID = table.Column<int>(type: "int", nullable: false),
-                    House = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    StudentID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RollNumber = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    ClassID = table.Column<int>(type: "integer", nullable: false),
+                    House = table.Column<string>(type: "text", nullable: false),
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,11 +78,11 @@ namespace TestbackendProject.Migrations
                 name: "Scores",
                 columns: table => new
                 {
-                    ScoreID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentID = table.Column<int>(type: "int", nullable: false),
-                    SubjectID = table.Column<int>(type: "int", nullable: false),
-                    ScoreValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    ScoreID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    StudentID = table.Column<int>(type: "integer", nullable: false),
+                    SubjectID = table.Column<int>(type: "integer", nullable: false),
+                    ScoreValue = table.Column<decimal>(type: "numeric(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,12 +105,12 @@ namespace TestbackendProject.Migrations
                 name: "SeatingPlans",
                 columns: table => new
                 {
-                    SeatingID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClassroomID = table.Column<int>(type: "int", nullable: false),
-                    Row = table.Column<int>(type: "int", nullable: false),
-                    Column = table.Column<int>(type: "int", nullable: false),
-                    StudentID = table.Column<int>(type: "int", nullable: false)
+                    SeatingID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ClassroomID = table.Column<int>(type: "integer", nullable: false),
+                    Row = table.Column<int>(type: "integer", nullable: false),
+                    Column = table.Column<int>(type: "integer", nullable: false),
+                    StudentID = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,8 +133,8 @@ namespace TestbackendProject.Migrations
                 name: "StudentSubjects",
                 columns: table => new
                 {
-                    StudentID = table.Column<int>(type: "int", nullable: false),
-                    SubjectID = table.Column<int>(type: "int", nullable: false)
+                    StudentID = table.Column<int>(type: "integer", nullable: false),
+                    SubjectID = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
